@@ -1,0 +1,430 @@
+<title>Huzaifa Ali Khan — Ecommerce Account Management Portfolio</title>
+<style>
+  :root{
+    --paper:#fcfbf8;
+    --paper-raise:#f4f2ec;
+    --ink:#24262b;
+    --muted:#5b6570;
+    --accent:#35526b;
+    --accent-2:#a9782f;
+    --rule:#d9d4c7;
+    --card:#ffffff;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --paper:#15171a;
+      --paper-raise:#1b1e22;
+      --ink:#e6e8e6;
+      --muted:#9aa3a6;
+      --accent:#8fb3cf;
+      --accent-2:#d1a355;
+      --rule:#2c3136;
+      --card:#1c2024;
+    }
+  }
+  :root[data-theme="dark"]{
+    --paper:#15171a; --paper-raise:#1b1e22; --ink:#e6e8e6; --muted:#9aa3a6;
+    --accent:#8fb3cf; --accent-2:#d1a355; --rule:#2c3136; --card:#1c2024;
+  }
+  :root[data-theme="light"]{
+    --paper:#fcfbf8; --paper-raise:#f4f2ec; --ink:#24262b; --muted:#5b6570;
+    --accent:#35526b; --accent-2:#a9782f; --rule:#d9d4c7; --card:#ffffff;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Palatino Linotype",Palatino,"Book Antiqua",Georgia,"Times New Roman",serif;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{ color:inherit; }
+  .wrap{ max-width:920px; margin:0 auto; padding:0 28px; }
+  section{ padding:64px 0; }
+  section.tight{ padding:44px 0; }
+  .rule{ border:none; border-top:1px solid var(--rule); margin:0; }
+
+  /* nav */
+  .nav{
+    position:sticky; top:0; z-index:20;
+    background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--rule);
+  }
+  .nav .wrap{ display:flex; align-items:center; justify-content:space-between; padding:14px 28px; }
+  .nav .brand{ font-weight:700; font-size:15px; letter-spacing:.01em; }
+  .nav .links{ display:flex; gap:22px; font-size:12.5px; }
+  .nav .links a{ text-decoration:none; color:var(--muted); letter-spacing:.03em; text-transform:uppercase; }
+  .nav .links a:hover{ color:var(--accent); }
+  @media (max-width:640px){ .nav .links{ display:none; } }
+
+  /* hero */
+  .hero{ padding:76px 0 40px; position:relative; overflow:hidden; }
+  .hero-inner{ position:relative; z-index:1; }
+  .eyebrow{
+    font-size:12px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent-2); margin-bottom:14px;
+  }
+  .hero h1{
+    font-size:44px; font-weight:700; margin:0 0 10px; letter-spacing:.001em;
+    text-wrap:balance;
+  }
+  .hero .tagline{
+    font-size:18px; color:var(--muted); max-width:56ch; margin:0 0 30px; font-style:italic;
+  }
+  .cta-row{ display:flex; flex-wrap:wrap; gap:12px; margin-bottom:46px; }
+  .btn{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+    font-size:13px; font-weight:600; letter-spacing:.02em;
+    padding:11px 20px; border-radius:5px; text-decoration:none;
+    display:inline-flex; align-items:center; gap:8px;
+    border:1px solid var(--rule);
+  }
+  .btn.primary{ background:var(--accent); color:#fff; border-color:var(--accent); }
+  .btn.primary:hover{ filter:brightness(1.08); }
+  .btn.ghost{ background:transparent; color:var(--ink); }
+  .btn.ghost:hover{ border-color:var(--accent); color:var(--accent); }
+
+  .stats{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
+    background:var(--rule); border:1px solid var(--rule); border-radius:8px; overflow:hidden;
+  }
+  .stat{ background:var(--card); padding:22px 18px; text-align:left; }
+  .stat .num{
+    font-size:27px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink);
+    display:block; margin-bottom:4px;
+  }
+  .stat .lbl{ font-size:11.5px; color:var(--muted); letter-spacing:.02em; }
+  @media (max-width:700px){ .stats{ grid-template-columns:1fr 1fr; } }
+
+  .hero-graphic{
+    position:absolute; right:-40px; top:20px; width:420px; height:220px;
+    opacity:.16; z-index:0; pointer-events:none;
+  }
+  @media (max-width:900px){ .hero-graphic{ display:none; } }
+
+  /* section headers */
+  h2.section-title{
+    font-size:13px; font-weight:700; letter-spacing:.14em; text-transform:uppercase;
+    color:var(--accent); margin:0 0 6px;
+  }
+  h3.section-sub{
+    font-size:26px; font-weight:700; margin:0 0 20px; text-wrap:balance;
+  }
+  .lede{ font-size:15px; color:var(--muted); max-width:68ch; margin:0 0 30px; }
+
+  p.body-text{ font-size:15px; max-width:70ch; text-align:justify; }
+
+  /* proof gallery */
+  .gallery{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:8px; }
+  @media (max-width:700px){ .gallery{ grid-template-columns:1fr; } }
+  .proof-card{
+    background:var(--card); border:1px solid var(--rule); border-radius:8px;
+    padding:16px; display:flex; flex-direction:column; gap:12px;
+  }
+  .proof-frame{
+    aspect-ratio:9/16; max-height:380px; border-radius:6px;
+    border:1.5px dashed var(--rule); background:var(--paper-raise);
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:20px; color:var(--muted); font-size:12.5px; line-height:1.5;
+  }
+  .proof-frame img{ width:100%; height:100%; object-fit:cover; border-radius:6px; }
+  .proof-caption .k{ font-size:11px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-2); display:block; margin-bottom:3px; }
+  .proof-caption .d{ font-size:13.5px; }
+
+  /* experience */
+  .xp-item{ margin-bottom:26px; }
+  .xp-item:last-child{ margin-bottom:0; }
+  .xp-head{ display:flex; justify-content:space-between; align-items:baseline; gap:14px; flex-wrap:wrap; }
+  .xp-title{ font-weight:700; font-size:17px; }
+  .xp-org{ font-style:italic; color:var(--muted); font-size:14px; }
+  .xp-date{ font-size:12.5px; color:var(--muted); font-style:italic; white-space:nowrap; }
+  .xp-desc{ font-size:14.5px; margin-top:6px; max-width:68ch; }
+
+  .client-grid{ display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:22px; }
+  @media (max-width:700px){ .client-grid{ grid-template-columns:1fr; } }
+  .client-card{
+    background:var(--card); border:1px solid var(--rule); border-radius:8px; padding:16px 18px;
+  }
+  .client-card .cname{ font-weight:700; font-size:14.5px; }
+  .client-card .cloc{ font-size:12px; color:var(--muted); font-style:italic; margin-bottom:6px; }
+  .client-card .cdate{ font-size:11.5px; color:var(--accent-2); font-weight:700; letter-spacing:.02em; margin-bottom:8px; }
+  .client-card .cdesc{ font-size:13px; color:var(--ink); }
+
+  /* skills */
+  .skill-groups{ display:grid; grid-template-columns:1fr 1fr; gap:26px; margin-top:10px; }
+  @media (max-width:700px){ .skill-groups{ grid-template-columns:1fr; } }
+  .skill-group .gtitle{ font-weight:700; font-size:14.5px; margin-bottom:8px; }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:8px; }
+  .tag{
+    font-size:12.3px; padding:5px 11px; border-radius:20px; border:1px solid var(--rule);
+    background:var(--card);
+  }
+
+  .cert-row{ display:flex; flex-wrap:wrap; gap:16px; margin-top:8px; }
+  .cert{ flex:1; min-width:220px; background:var(--card); border:1px solid var(--rule); border-radius:8px; padding:14px 16px; }
+  .cert .ct{ font-weight:700; font-size:13.8px; }
+  .cert .cs{ font-size:12px; color:var(--muted); }
+
+  footer{ padding:50px 0 70px; }
+  .foot-grid{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:flex-end; }
+  .foot-name{ font-weight:700; font-size:17px; }
+  .foot-role{ font-size:12.5px; color:var(--muted); margin-top:2px; }
+  .foot-links{ display:flex; gap:18px; font-size:13px; }
+  .foot-links a{ text-decoration:none; color:var(--muted); }
+  .foot-links a:hover{ color:var(--accent); }
+
+  @media (max-width:640px){
+    .hero h1{ font-size:32px; }
+    .hero .tagline{ font-size:16px; }
+    section{ padding:44px 0; }
+  }
+</style>
+
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand">Huzaifa Ali Khan</div>
+    <div class="links">
+      <a href="#work">Work</a>
+      <a href="#proof">Results</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <div class="eyebrow">Ecommerce Account Management Portfolio</div>
+    <h1>Huzaifa Ali Khan</h1>
+    <p class="tagline">Account manager for online retail brands. Two years of keeping several client accounts healthy and growing at the same time, backed by the numbers to show for it.</p>
+
+    <div class="cta-row">
+      <a class="btn primary" href="https://claude.ai/code/artifact/cc4d780b-893f-4675-ad9a-6f4557cb8371" target="_blank" rel="noopener">View Full Resume</a>
+      <a class="btn ghost" href="https://www.linkedin.com/in/huzaifa-ali-khan-613b77207" target="_blank" rel="noopener">Connect on LinkedIn</a>
+      <a class="btn ghost" href="mailto:huzaifaalikhan666@gmail.com">Email Me</a>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><span class="num">2+</span><span class="lbl">Years in Ecommerce Account Management</span></div>
+      <div class="stat"><span class="num">7</span><span class="lbl">Client Brands Managed, US / UK / France</span></div>
+      <div class="stat"><span class="num">$50K+</span><span class="lbl">Combined Client Revenue Generated</span></div>
+      <div class="stat"><span class="num">$2,625+</span><span class="lbl">Personal Wholesale Account Sales</span></div>
+    </div>
+  </div>
+
+  <svg class="hero-graphic" viewBox="0 0 420 220" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polyline points="10,180 60,165 110,175 160,120 210,130 260,80 310,95 360,40 410,55"
+      stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)"/>
+    <circle cx="410" cy="55" r="6" fill="var(--accent-2)"/>
+  </svg>
+</header>
+
+<hr class="rule">
+
+<section class="tight">
+  <div class="wrap">
+    <h2 class="section-title">About</h2>
+    <p class="body-text">
+      I manage ecommerce accounts the way a good account manager should, one relationship at a time, with enough attention that nothing slips even when several accounts are moving at once. Between 2022 and 2024 I worked independently as an account manager for seven ecommerce brands across the United States, the United Kingdom, and France, several of them running concurrently, handling sourcing, supplier negotiation, listing strategy, and account health for each. I have since applied the same approach to a wholesale account of my own, and I am currently completing a Klaviyo certification to bring the same data driven approach into email and SMS marketing.
+    </p>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="proof">
+  <div class="wrap">
+    <h2 class="section-title">Results</h2>
+    <h3 class="section-sub">Performance in Numbers</h3>
+    <p class="lede">Screenshots pulled directly from Amazon Seller Central for the wholesale account I founded and operate, along with results from client accounts as they are added.</p>
+
+    <div class="gallery">
+      <div class="proof-card">
+        <div class="proof-frame">Seller Central screenshot to be added: $1,378 in product sales over a 30 day window, up more than 5,400% from the prior 30 day period for a newly launched account.</div>
+        <div class="proof-caption">
+          <span class="k">Independent Wholesale Account</span>
+          <span class="d">30 day product sales, early growth window</span>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-frame">Seller Central screenshot to be added: $1,274 in product sales over a later 30 day window, with same day sales and units ordered tracked in real time.</div>
+        <div class="proof-caption">
+          <span class="k">Independent Wholesale Account</span>
+          <span class="d">30 day product sales, sustained performance</span>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-frame">Client account screenshot to be added.</div>
+        <div class="proof-caption">
+          <span class="k">Client Work</span>
+          <span class="d">To be added</span>
+        </div>
+      </div>
+      <div class="proof-card">
+        <div class="proof-frame">Client account screenshot to be added.</div>
+        <div class="proof-caption">
+          <span class="k">Client Work</span>
+          <span class="d">To be added</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="work">
+  <div class="wrap">
+    <h2 class="section-title">Work</h2>
+    <h3 class="section-sub">Experience</h3>
+
+    <div class="xp-item">
+      <div class="xp-head">
+        <div><span class="xp-title">Founder</span> <span class="xp-org">, Independent Amazon Wholesale Account</span></div>
+        <div class="xp-date">2024 &ndash; Present</div>
+      </div>
+      <p class="xp-desc">After two years managing accounts for other people's brands, I started a wholesale account of my own to test whether the same sourcing, listing, and growth approach would hold up without a client's business on the line. It has, generating more than $2,625 in sales from listings built from nothing, tracked directly from Seller Central.</p>
+    </div>
+
+    <div class="xp-item">
+      <div class="xp-head">
+        <div><span class="xp-title">Freelance Account Manager</span> <span class="xp-org">, Independent via Fiverr</span></div>
+        <div class="xp-date">Jan 2022 &ndash; Aug 2024</div>
+      </div>
+      <p class="xp-desc">Managed account strategy for seven ecommerce brands based in the United States, the United Kingdom, and France, several of them at the same time, acting as the sole point of contact for sourcing, listing, pricing, and account health on each.</p>
+
+      <div class="client-grid">
+        <div class="client-card">
+          <div class="cname">AMT Products LLC</div>
+          <div class="cloc">United States</div>
+          <div class="cdate">Jul 2022 &ndash; Aug 2023</div>
+          <div class="cdesc">Product hunting and sales history analysis, authorized sourcing, PPC campaigns for new listings.</div>
+        </div>
+        <div class="client-card">
+          <div class="cname">Team Del</div>
+          <div class="cloc">France</div>
+          <div class="cdate">Jan 2022 &ndash; May 2022</div>
+          <div class="cdesc">In depth product and competitor research to guide catalog decisions.</div>
+        </div>
+        <div class="client-card">
+          <div class="cname">Gugga LLC</div>
+          <div class="cloc">United States</div>
+          <div class="cdate">Aug 2022 &ndash; Jun 2023</div>
+          <div class="cdesc">Sourcing, inventory, and listing optimization, with logistics, fulfillment, and pricing strategy.</div>
+        </div>
+        <div class="client-card">
+          <div class="cname">Block Chain Developers Inc</div>
+          <div class="cloc">United States</div>
+          <div class="cdate">Nov 2022 &ndash; Dec 2023</div>
+          <div class="cdesc">Competitive research and supplier negotiation, brand approvals, budgets across sourcing and shipment.</div>
+        </div>
+        <div class="client-card">
+          <div class="cname">Zenosell Ltd</div>
+          <div class="cloc">United Kingdom</div>
+          <div class="cdate">Feb 2023 &ndash; May 2024</div>
+          <div class="cdesc">Lead generation and brand approvals, listing management, inventory, and PPC advertising.</div>
+        </div>
+        <div class="client-card">
+          <div class="cname">Saas International LLC</div>
+          <div class="cloc">United States</div>
+          <div class="cdate">Aug 2023 &ndash; Jun 2024</div>
+          <div class="cdesc">Wholesale brand research and lead generation, supplier negotiation, inventory and shipment prep.</div>
+        </div>
+        <div class="client-card">
+          <div class="cname">Marktory LLC</div>
+          <div class="cloc">United States</div>
+          <div class="cdate">Aug 2023 &ndash; Aug 2024</div>
+          <div class="cdesc">Seller Central setup and management, deactivation resolution, PPC campaigns and listings.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="xp-item">
+      <div class="xp-head">
+        <div><span class="xp-title">Teaching Assistant and LMS Developer</span> <span class="xp-org">, CAIE Physics Program</span></div>
+        <div class="xp-date">2025 &ndash; Present</div>
+      </div>
+      <p class="xp-desc">Support several student batches while building the program's full stack learning management system, using Claude and other AI tools to automate recurring content work without losing quality.</p>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<section id="skills">
+  <div class="wrap">
+    <h2 class="section-title">Skills</h2>
+    <h3 class="section-sub">Tools and Expertise</h3>
+
+    <div class="skill-groups">
+      <div class="skill-group">
+        <div class="gtitle">Ecommerce Operations</div>
+        <div class="tag-row">
+          <span class="tag">Product Sourcing</span>
+          <span class="tag">Listing Optimization</span>
+          <span class="tag">Inventory and Pricing</span>
+          <span class="tag">PPC Campaign Management</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="gtitle">Client and Account Management</div>
+        <div class="tag-row">
+          <span class="tag">HubSpot CRM</span>
+          <span class="tag">Retention Strategy</span>
+          <span class="tag">Account Health and Compliance</span>
+          <span class="tag">Supplier Negotiation</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="gtitle">Growth and Marketing</div>
+        <div class="tag-row">
+          <span class="tag">Lead Generation</span>
+          <span class="tag">Klaviyo Email and SMS</span>
+          <span class="tag">Profile SEO and Positioning</span>
+        </div>
+      </div>
+      <div class="skill-group">
+        <div class="gtitle">Technical</div>
+        <div class="tag-row">
+          <span class="tag">Python</span>
+          <span class="tag">SQL</span>
+          <span class="tag">C++</span>
+          <span class="tag">Verilog</span>
+          <span class="tag">SolidWorks</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cert-row">
+      <div class="cert">
+        <div class="ct">Amazon FBA Wholesale Certification</div>
+        <div class="cs">Extreme Commerce, Enablers, Ecommerce Success Pakistan</div>
+      </div>
+      <div class="cert">
+        <div class="ct">Klaviyo Email and SMS Marketing</div>
+        <div class="cs">In progress, 2026</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="rule">
+
+<footer id="contact">
+  <div class="wrap foot-grid">
+    <div>
+      <div class="foot-name">Huzaifa Ali Khan</div>
+      <div class="foot-role">Account Manager, Client Retention and Growth &middot; Karachi, Pakistan (Remote, US hours)</div>
+    </div>
+    <div class="foot-links">
+      <a href="mailto:huzaifaalikhan666@gmail.com">Email</a>
+      <a href="https://www.linkedin.com/in/huzaifa-ali-khan-613b77207" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.fiverr.com/s/gDRgrdY" target="_blank" rel="noopener">Fiverr</a>
+      <a href="https://claude.ai/code/artifact/cc4d780b-893f-4675-ad9a-6f4557cb8371" target="_blank" rel="noopener">Resume</a>
+    </div>
+  </div>
+</footer>
